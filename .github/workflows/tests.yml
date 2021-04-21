@@ -1,0 +1,34 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node
+        - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.1
+          bundler-cache: true
+      - name: Setup the Rails application
+        env:
+          DATABASE_TEST_PWD: postgres
+          RAILS_ENV: test
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          yarn --frozen-lockfile
+      - name: Run tests
+        run: bundle exec rails test:all
