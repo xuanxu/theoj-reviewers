@@ -6,9 +6,10 @@ jobs:
     services:
       postgres:
         image: postgres:13
-        env:
-          POSTGRES_PASSWORD: postgres
         ports: ['5432:5432']
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: secret
     steps:
       - uses: actions/checkout@v2
       - name: Install Node
@@ -20,13 +21,11 @@ jobs:
         with:
           ruby-version: 3.0.0
           bundler-cache: true
-      - name: Setup the Rails application
+      - name: Setup app and run tests
         env:
-          DATABASE_TEST_PWD: postgres
+          PGUSER: postgres
+          PGPASSWORD: secret
           RAILS_ENV: test
         run: |
-          bundle exec rails db:create
-          bundle exec rails db:migrate
-          yarn --frozen-lockfile
-      - name: Run tests
-        run: bundle exec rails test:all
+          bundle exec rails db:setup
+          bundle exec rails test:all
