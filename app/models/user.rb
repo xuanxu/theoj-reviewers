@@ -1,3 +1,3 @@
-class Reviewer < ApplicationRecord
+class User < ApplicationRecord
   validates :github, uniqueness: true
 end

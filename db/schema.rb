@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_101516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "reviewers", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "github", null: false
@@ -23,11 +23,13 @@ ActiveRecord::Schema.define(version: 2021_04_15_101516) do
     t.string "email"
     t.string "url"
     t.string "github_avatar_url"
+    t.boolean "admin", default: false
+    t.boolean "reviewer", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["github"], name: "index_reviewers_on_github"
-    t.index ["last_name"], name: "index_reviewers_on_last_name"
-    t.index ["orcid"], name: "index_reviewers_on_orcid"
+    t.index ["github"], name: "index_users_on_github"
+    t.index ["last_name"], name: "index_users_on_last_name"
+    t.index ["orcid"], name: "index_users_on_orcid"
   end
 
 end
