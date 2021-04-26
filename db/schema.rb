@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_101516) do
+ActiveRecord::Schema.define(version: 2021_04_26_102809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2021_04_15_101516) do
     t.boolean "reviewer", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "affiliation", null: false
+    t.string "preferred_languages", default: [], array: true
+    t.string "other_languages", default: [], array: true
+    t.string "areas", default: [], array: true
+    t.text "description", default: ""
+    t.string "twitter"
     t.index ["github"], name: "index_users_on_github"
     t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["orcid"], name: "index_users_on_orcid"
