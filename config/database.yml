@@ -11,7 +11,6 @@ development:
 test:
   <<: *default
   database: reviewers_test
-  password: <%= ENV.fetch("DATABASE_TEST_PWD") {} %>
 
 # If the connection URL is provided in the special DATABASE_URL environment
 # variable, Rails will automatically merge its configuration values on top of
