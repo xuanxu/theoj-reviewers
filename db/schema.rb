@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_113834) do
+ActiveRecord::Schema.define(version: 2021_04_27_102724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_113834) do
     t.text "description", default: ""
     t.string "twitter"
     t.string "github_token"
-    t.string "github_id", null: false
+    t.string "github_uid", null: false
     t.index ["github"], name: "index_users_on_github"
     t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["orcid"], name: "index_users_on_orcid"
