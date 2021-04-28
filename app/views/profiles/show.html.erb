@@ -1,4 +1,15 @@
-<h1><%= image_tag current_user.github_avatar_url, width: '50px' %> User profile</h1>
+<%= link_to "Home", root_path %>
+
+<h1><%= image_tag @user.github_avatar_url, width: '50px' %> User profile</h1>
+
+<div>
+  Github: <%= @user.github %>
+  <% if @user.orcid %>
+    Orcid: <%= @user.orcid %>
+  <% else %>
+    <%= link_to "Add your ORCID", "/auth/orcid", method: :post %>
+  <% end %>
+</div>
 
 <%= form_for(@user, url: profile_path, method: :put) do |f| %>
   <div>

@@ -13,6 +13,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def orcid
+    current_user.update(orcid: request.env["omniauth.auth"].uid)
+    redirect_to profile_path, notice: 'Your ORCID was successfully updated.'
+  end
+
 
   private
 
