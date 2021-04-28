@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def require_user
+    unless current_user
+      flash[:error] = "Please login first"
+      redirect_back fallback_location: :root
+      false # throw :abort
+    end
+  end
+
   private
 
   def current_user
