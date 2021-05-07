@@ -9,8 +9,12 @@ FactoryBot.define do
       reviewer { true }
     end
 
+    trait :editor do
+      editor { true }
+    end
+
     trait :admin do
-      reviewer { true }
+      admin { true }
     end
   end
 end

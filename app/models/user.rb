@@ -1,3 +1,5 @@
+require 'editors'
+
 class User < ApplicationRecord
   validates :github, uniqueness: true
   validates :github_uid, uniqueness: true
@@ -12,5 +14,10 @@ class User < ApplicationRecord
       user.github_token = auth.credentials.token
       user.save
     end
+  end
+
+  def update_editor_status
+    self.editor = Editors.include_user?(self)
+    save
   end
 end

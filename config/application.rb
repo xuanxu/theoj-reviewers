@@ -31,5 +31,7 @@ module Reviewers
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    attr_accessor :settings
+    self.settings = YAML.load_file(Rails.root.join("config/settings.yml")).with_indifferent_access
   end
 end
