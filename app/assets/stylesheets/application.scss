@@ -84,6 +84,51 @@ a:hover {
     text-decoration: none;
 }
 
+.action-btn {
+    background-color: #2E294E;
+    color: #fff;
+    font-weight: bold;
+    padding: 1em 2em;
+    position: relative;
+    line-height: 1em;
+    overflow: hidden;
+    height: 3em;
+    @include transition(.35s ease all);
+
+    &:hover {
+        // line-height: 9em;
+        background-color: #4D4482;
+        color: #fff;
+    }
+}
+
+.action-btn {
+    margin-bottom: 15px;
+}
+
+.generic-content-item {
+    background: #fff;
+    padding: 2em 3em;
+    margin: 0.75em 0;
+    box-shadow: 0 2px 8px 0 rgba(46, 41, 78, 0.10);
+    border-radius: 4px;
+    @media screen and (max-width: 768px) {
+        padding:2em 1.5em;
+    }
+    h1,
+    h2 {
+        border-bottom: 1px solid #EAE9ED;
+        margin-bottom: 0.75em;
+        padding-bottom: 0.25em;
+    }
+    p {
+        margin-bottom: 1em;
+    }
+    img {
+        max-width: 100%;
+    }
+}
+
 .navbar {
 
     justify-content: space-between;
