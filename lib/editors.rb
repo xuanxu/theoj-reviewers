@@ -1,3 +1,5 @@
+require 'github'
+
 class Editors
   def self.include_user?(user)
     user_login = user.is_a?(String) ? user : user.github
