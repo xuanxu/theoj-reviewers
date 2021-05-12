@@ -1,7 +1,11 @@
-<% [:error, :warning, :notice].each do |level| %>
-  <% if flash[level] %>
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg %>
-    <% end -%>
+<div class="container">
+  <div id="flash-message-wrapper">
+  <% [:error, :warning, :notice].each do |level| %>
+    <% if flash[level] %>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg %>
+      <% end -%>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
+</div>
