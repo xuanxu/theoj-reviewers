@@ -1,7 +1,7 @@
 name: Tests
 on: [push, pull_request]
 jobs:
-  test:
+  specs:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -21,11 +21,11 @@ jobs:
         with:
           ruby-version: 3.0.1
           bundler-cache: true
-      - name: Setup app and run tests
+      - name: Setup app and run specs
         env:
           PGUSER: postgres
           PGPASSWORD: secret
           RAILS_ENV: test
         run: |
           bundle exec rails db:setup
-          bundle exec rails test:all
+          bundle exec rails spec
