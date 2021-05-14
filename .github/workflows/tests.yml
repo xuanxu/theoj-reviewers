@@ -21,7 +21,7 @@ jobs:
         with:
           ruby-version: 3.0.1
           bundler-cache: true
-      - name: Setup app and run specs
+      - name: Run specs
         env:
           PGUSER: postgres
           PGPASSWORD: secret
