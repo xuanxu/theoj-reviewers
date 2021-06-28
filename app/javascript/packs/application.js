@@ -11,4 +11,5 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+import { Tooltip, Toast, Popover } from 'bootstrap';
 import '../bootstrap_js_files.js'
