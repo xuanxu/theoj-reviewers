@@ -6,11 +6,11 @@ default: &default
 
 development:
   <<: *default
-  database: reviewers_development
+  database: reviewers_old_development
 
 test:
   <<: *default
-  database: reviewers_test
+  database: reviewers_old_test
 
 # If the connection URL is provided in the special DATABASE_URL environment
 # variable, Rails will automatically merge its configuration values on top of
